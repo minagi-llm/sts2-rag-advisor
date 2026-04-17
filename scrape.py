@@ -1,60 +1,47 @@
 # scrape.py
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 import os
 import time
+import json
 
-BASE = "https://sts2-wiki.org"
+with open("config.json", "r", encoding="utf-8") as f:
+    config = json.load(f)
 
-PAGES = [
-    "/slay-the-spire-2-characters/ironclad",
-    "/slay-the-spire-2-characters/silent",
-    "/slay-the-spire-2-characters/regent",
-    "/slay-the-spire-2-characters/necrobinder",
-    "/slay-the-spire-2-characters/defect",
-]
-
-OUTPUT_DIR = "./sts2_wiki_docs_v2"
+OUTPUT_DIR = config["output_dir"]
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()),
+    options=options
+)
 
 def scrape_page(url):
-    res = requests.get(url, headers=HEADERS)
-    print(f"  HTTPステータス: {res.status_code}")
-    if res.status_code != 200:
-        return None
+    driver.get(url)
+    time.sleep(3)
+    text = driver.find_element(By.TAG_NAME, "body").text
+    return text if text else None
 
-    soup = BeautifulSoup(res.text, "html.parser")
-
-    content = (
-        soup.find("main") or
-        soup.find("article") or
-        soup.find("div", class_="content") or
-        soup.find("div", id="content")
-    )
-    if not content:
-        content = soup.find("body")
-
-    for tag in content.find_all(["script", "style", "nav", "footer", "header"]):
-        tag.decompose()
-
-    return content.get_text(separator="\n", strip=True)
-
-for path in PAGES:
-    url = BASE + path
-    page_name = path.split("/")[-1]
-    print(f"\nScraping: {page_name}")
+for source in config["sources"]:
+    name = source["name"]
+    url = source["url"]
+    print(f"\nScraping: {name}")
 
     text = scrape_page(url)
     if text:
-        filepath = os.path.join(OUTPUT_DIR, f"{page_name}.txt")
+        filepath = os.path.join(OUTPUT_DIR, f"{name}.txt")
         with open(filepath, "w", encoding="utf-8") as f:
-            f.write(f"# {page_name}\nSource: {url}\n\n{text}")
+            f.write(f"# {name}\nSource: {url}\n\n{text}")
         print(f"  保存完了: {filepath}（{len(text)}文字）")
     else:
         print(f"  取得失敗: {url}")
 
-    time.sleep(2)
-
+driver.quit()
 print("\n完了！")

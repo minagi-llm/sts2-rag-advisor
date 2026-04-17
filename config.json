@@ -1,0 +1,97 @@
+{
+  "output_dir": "./sts2_mobalytics",
+  "sources": [
+    {
+      "name": "mobalytics-beginner-guide",
+      "url": "https://mobalytics.gg/slay-the-spire-2/guides/beginner-guide"
+    },
+    {
+      "name": "mobalytics-ancients",
+      "url": "https://mobalytics.gg/slay-the-spire-2/guides/ancients"
+    },
+    {
+      "name": "mobalytics-ironclad-guide",
+      "url": "https://mobalytics.gg/slay-the-spire-2/characters/ironclad-guide"
+    },
+    {
+      "name": "mobalytics-silent-guide",
+      "url": "https://mobalytics.gg/slay-the-spire-2/characters/silent-guide"
+    },
+    {
+      "name": "mobalytics-defect-guide",
+      "url": "https://mobalytics.gg/slay-the-spire-2/characters/defect-guide"
+    },
+    {
+      "name": "mobalytics-regent-guide",
+      "url": "https://mobalytics.gg/slay-the-spire-2/characters/regent-guide"
+    },
+    {
+      "name": "game8-beginner",
+      "url": "https://game8.jp/slaythespire2/779345"
+    },
+    {
+      "name": "game8-ironclad",
+      "url": "https://game8.jp/slaythespire2/776761"
+    },
+    {
+      "name": "game8-silent",
+      "url": "https://game8.jp/slaythespire2/776762"
+    },
+    {
+      "name": "game8-regent",
+      "url": "https://game8.jp/slaythespire2/776763"
+    },
+    {
+      "name": "game8-necrobinder",
+      "url": "https://game8.jp/slaythespire2/776764"
+    },
+    {
+      "name": "game8-defect",
+      "url": "https://game8.jp/slaythespire2/776765"
+    },
+    {
+      "name": "game8-keywords",
+      "url": "https://game8.jp/slaythespire2/778529"
+    },
+    {
+      "name": "game8-ancients",
+      "url": "https://game8.jp/slaythespire2/779571"
+    },
+    {
+      "name": "game8-route",
+      "url": "https://game8.jp/slaythespire2/776970"
+    },
+    {
+      "name": "game8-defect-cards",
+      "url": "https://game8.jp/slaythespire2/778150"
+    },
+    {
+      "name": "game8-ironclad-cards",
+      "url": "https://game8.jp/slaythespire2/778124"
+    },
+    {
+      "name": "game8-silent-cards",
+      "url": "https://game8.jp/slaythespire2/778138"
+    },
+    {
+      "name": "game8-regent-cards",
+      "url": "https://game8.jp/slaythespire2/778140"
+    },
+    {
+      "name": "game8-necrobinder-cards",
+      "url": "https://game8.jp/slaythespire2/778143"
+    },
+    {
+      "name": "game8-colorless-cards",
+      "url": "https://game8.jp/slaythespire2/778151"
+    },
+    {
+      "name": "game8-relics",
+      "url": "https://game8.jp/slaythespire2/778127"
+    },
+    {
+      "name": "game8-potions",
+      "url": "https://game8.jp/slaythespire2/778296"
+    }
+  ]
+}
