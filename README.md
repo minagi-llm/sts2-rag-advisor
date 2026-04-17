@@ -1,4 +1,4 @@
-# STS2攻略アドバイザー
+# STS2攻略アドバイザー(実験)
 
 ローカルLLM（ollama + OpenWebUI）とRAGを使って、Slay the Spire 2の攻略アドバイザーを構築するプロジェクトです。
 
